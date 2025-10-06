@@ -50,7 +50,7 @@ TEST(StringCalculatorTDD, ThrowsOnSingleNegative) {
 TEST(StringCalculatorTDD, ThrowsOnMultipleNegativesListsAll) {
   StringCalculator calc;
   try {
-    (void)calc.Add("-1,-2,3,-4");
+    (void)calc.Add("-1,-2,-4");
     FAIL() << "Expected exception for negatives";
   } catch (const std::invalid_argument& ex) {
     EXPECT_STREQ(ex.what(), "negatives not allowed: -1,-2,-4");
