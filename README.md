@@ -16,6 +16,25 @@ the first line is optional. all existing scenarios should still be supported
 - Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
 - Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
 
+
+## Test Specification
+
+
+| Test ID | Test Name                          | Input                  | Expected Output  | Notes                                    |
+|---------|------------------------------------|------------------------|------------------|------------------------------------------|
+| TC-01   | ReturnZeroForEmptyString           | ""                     | 0                | Empty string returns 0                   |
+| TC-02   | ReturnSingleNumber                 | "1"                    | 1                | Single number                            |
+| TC-03   | SumTwoCommaSeparatedNumbers        | "1,2"                  | 3                | Two numbers separated by comma           |
+| TC-04   | SumMultipleNumbers                 | "1,2,3,4"              | 10               | Handles unknown amount of numbers        |
+| TC-05   | HandleNewLineAsDelimiter           | "1\n2,3"               | 6                | Supports newline as delimiter            |
+| TC-06   | InvalidNewLineFormat               | "1,\n"                 | Exception        | Invalid format, not required to prove    |
+| TC-07   | CustomSingleCharDelimiter          | "//;\n1;2"             | 3                | Custom delimiter `;`                     |
+| TC-08   | NegativeNumberThrowsException      | "1,-2"                 | Exception        | Message: "negatives not allowed: -2"     |
+| TC-09   | MultipleNegativesException         | "1,-2,-3"              | Exception        | Message: "negatives not allowed: -2, -3" |
+| TC-10   | IgnoreNumbersGreaterThan1000       | "2,1001"               | 2                | Numbers >1000 are ignored                |
+| TC-11   | CustomDelimiterAnyLength           | "//[***]\n1***2***3"   | 6                | Delimiter of any length                  |
+| TC-12   | MultipleCustomDelimiters           | "//[*][%]\n1*2%3"      | 6                | Multiple delimiters (if supported)       |
+
 ## Tasks
 
 
