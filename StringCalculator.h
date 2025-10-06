@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef __cplusplus
+
 #include <string>
 #include <vector>
 
@@ -28,3 +30,5 @@ class StringCalculator {
   static std::string buildNegativeNumbersMessage(const std::vector<int>& negatives);
   static int calculateSum(const std::vector<int>& nums);
 };
+
+#endif  // __cplusplus
