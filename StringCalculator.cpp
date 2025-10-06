@@ -129,11 +129,12 @@ std::vector<int> StringCalculator::findNegativeNumbers(const std::vector<int>& n
     return negatives;
 }
 
-std::string StringCalculator::buildNegativeNumbersMessage(const std::vector<int>& negatives) {
-    std::string message = "negatives not allowed: ";
-    for (size_t i = 0; i < negatives.size(); ++i) {
-        if (i > 0) message += ", ";
-        message += std::to_string(negatives[i]);
-    }
-    return message;
+std::string StringCalculator::buildNegativeNumbersMessage(
+    const std::vector<int>& negatives) {
+  std::string message = "negatives not allowed: ";
+  for (std::size_t i = 0; i < negatives.size(); ++i) {
+    if (i > 0) message += ",";  // no space after comma
+    message += std::to_string(negatives[i]);
+  }
+  return message;
 }
