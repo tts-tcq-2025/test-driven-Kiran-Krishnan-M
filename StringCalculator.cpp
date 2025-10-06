@@ -44,11 +44,9 @@ std::string StringCalculator::parseDelimiter(const std::string& numbers) {
 
   std::size_t newline_pos = numbers.find('\n');
   if (newline_pos == std::string::npos) {
-    // Malformed header: fall back to default delimiter
     return ",";
   }
 
-  // Extract content between '//' and the first newline.
   std::string header = numbers.substr(2, newline_pos - 2);
   return extractDelimiterFromHeader(header);
 }
@@ -60,7 +58,6 @@ bool StringCalculator::hasCustomDelimiterFormat(const std::string& numbers) {
 std::string StringCalculator::extractDelimiterFromHeader(
     const std::string& delimiter_part) {
   if (hasBracketFormat(delimiter_part)) {
-    // Strip leading '[' and trailing ']'.
     return delimiter_part.substr(1, delimiter_part.length() - 2);
   }
   return delimiter_part;
@@ -83,7 +80,6 @@ std::string StringCalculator::extractNumbersAfterDelimiterHeader(
     const std::string& numbers) {
   std::size_t newline_pos = numbers.find('\n');
   if (newline_pos == std::string::npos || newline_pos + 1 >= numbers.length()) {
-    // If malformed, return original; spec does not require rejecting it.
     return numbers;
   }
   return numbers.substr(newline_pos + 1);
@@ -151,4 +147,3 @@ std::string StringCalculator::buildNegativeNumbersMessage(
     message += std::to_string(negatives[i]);
   }
   return message;
-}
